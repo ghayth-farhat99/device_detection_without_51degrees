@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include google fonts library -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Include css -->
+    <link rel="stylesheet" href="/pages/bienvenue/bienvenue_style.css">
+    <title>Device Information</title>
+   
+</head>
+<body data-page-id="bienvenue_IHM">
+    <div class="content">
+        <div class="navbar">
+            <div>
+                <!-- logo of the application will be here -->
+            </div>
+            <diV class="nomAppli">
+                <h1>nomAppli</h1>
+            </diV>
+        </div>
+
+        <div class="bienvenue_container">
+            <h1 class="bienvenue">Bienvenue !</h1>
+        </div>
+
+        <div class="first_message_container">
+            <p class="first_message">Merci de participer à <br/> l'expérimentation de nomAppli.</p>
+        </div>
+        
+        <div class="spinner_container">
+            <span class="loader"></span>
+        </div>
+
+        <div class="second_message_container">
+            <p class="second_message">
+                <b>Aucune donnée personnelle</b> n'est recueillie <br/> durant l'expérience qui vous est proposée.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Inclure le fichier saisonDetection.js -->
+    <script src="../../js/saisonDetection.js"></script>
+
+    <!-- Inclure le fichier wakeLock.js -->
+    <script src="../../js/wakeLock.js"></script>
+    
+    <script src="../../js/deviceModelDetection.js"></script>
+    
+</body>
+</html>

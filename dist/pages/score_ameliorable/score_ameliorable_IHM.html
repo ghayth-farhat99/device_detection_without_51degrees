@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include google fonts library -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Include css -->
+    <link rel="stylesheet" href="/pages/score_ameliorable/score_ameliorable.css"/>
+    <title>Écorating</title>
+
+</head>
+<body data-page-id="score_ameliorable_IHM">
+    <div class="content">
+        <div class="navbar">
+            <div>
+                <!-- logo of the application will be here -->
+            </div>
+            <diV class="nomAppli">
+                <h1>nomAppli</h1>
+            </diV>
+        </div>
+        <div class="header">
+            <figure>
+                <figcaption class="logo_title">score écorating</figcaption>
+                <img src="../images/logo.png" class="logo">
+            </figure>
+            <h1 id="ecoRating" class="score"></h1>
+        </div>
+    
+        <div class="message">
+            <p>Et si vous pensiez à un mobile à moindre impact pour la planète ?</p>
+        </div>
+
+        <div class="btn-container">
+            <div class="btn1">
+                <button id="searchButton"> <img src="../../images/buttons/button1.png" class="icon"><span class="button-text"> Où chercher ?</span></button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Extract URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('ecoRating').innerText = urlParams.get('eco_rating') + "%";
+        const elementID = urlParams.get('element_ID_MongoDB');
+
+        document.getElementById("searchButton").addEventListener("click", function() {
+            window.location.href = `/ou_chercher_IHM.html?${urlParams.toString()}`;
+        });
+    </script>
+
+    <!-- Inclure le fichier checkOnBaseStatus.js -->
+    <script src="../../js/checkOnBaseStatus.js"></script>
+    
+     <!-- Inclure le fichier saisonDetection.js -->
+     <script src="../../js/saisonDetection.js"></script>
+
+     <!-- Inclure le fichier wakeLock.js -->
+     <script src="../../js/wakeLock.js"></script>
+
+</body>
+</html>

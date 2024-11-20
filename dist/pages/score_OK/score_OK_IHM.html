@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include google fonts library -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Include css -->
+    <link rel="stylesheet" href="/pages/score_OK/score_OK.css"/>
+    <title>Écorating</title>
+
+</head>
+<body data-page-id="score_OK_IHM">
+    <div class="content">
+        <div class="navbar">
+            <div>
+                <!-- logo of the application will be here -->
+            </div>
+            <diV class="nomAppli">
+                <h1>nomAppli</h1>
+            </diV>
+        </div>
+        <div class="header">
+            <figure>
+                <figcaption class="logo_title">score écorating</figcaption>
+                <img class="logo">
+            </figure>
+            <h1 id="ecoRating" class="score">null%</h1>
+        </div>
+        
+        <div class="message">
+            <p>Avez-vous pensé à prendre un accessoire à label vert ?</p>
+        </div>
+    
+        <div class="btn-container">
+            <div class="btn1">
+                <button id="findButton"><img src="../../images/buttons/button1.png" class="icon"><span class="button-text">Où les trouver ?</span></button>
+            </div>
+    
+        </div>   
+    </div>
+
+
+    <script>
+        // Extract URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        document.getElementById("findButton").addEventListener("click", function(){
+            window.location.href = "/labels_verts_IHM.html";
+        })
+
+        // Populate the HTML with data
+        document.getElementById('ecoRating').innerText =urlParams.get('eco_rating') + "%";
+
+    </script>
+
+    <!-- Inclure le fichier saisonDetection.js -->
+    <script src="../../js/saisonDetection.js"></script>
+    
+    <!-- Inclure le fichier wakeLock.js -->
+    <script src="../../js/wakeLock.js"></script>
+</body>
+</html>
