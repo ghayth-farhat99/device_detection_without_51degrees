@@ -79,12 +79,8 @@ function searchCsv(id) {
 app.post('/', async (req, res) => {
     try {
         const deviceData = req.body;
-        deviceData.onBase = 0;
-        const hardwareModel = deviceData.hardwareModel; // Assuming hardwareModel comes from the client request
         console.log('Received request body:', req.body); // Log the request body to verify the data
-        
-        // Create a new device document using the model
-        const device = new Device(deviceData);
+        const hardwareModel = deviceData.hardwareModel; // Assuming hardwareModel comes from the client request
 
         // Proceed with redirection logic
         if (!hardwareModel || hardwareModel.toLowerCase() !== 'unknown') {
@@ -94,13 +90,17 @@ app.post('/', async (req, res) => {
 
 
             if (deviceFromCsv) {
-                // Save the document to the database
+            // Save the document to the database
+                deviceData.onBase = 0;
                 deviceData.ecoScore = parseInt(deviceFromCsv.eco_rating, 10);
                 deviceData.durability = encodeURIComponent(deviceFromCsv.durability || '');
                 deviceData.repairability = encodeURIComponent(deviceFromCsv.repairability || '');
                 deviceData.recyclability = encodeURIComponent(deviceFromCsv.recyclability || '');
                 deviceData.climate_efficiency = encodeURIComponent(deviceFromCsv.climate_efficiency || '');
                 deviceData.resource_efficiency = encodeURIComponent(deviceFromCsv.resource_efficiency || '');
+                
+                // Create a new device document using the model
+                const device = new Device(deviceData);
                 const savedDevice = await device.save();
                 console.log('Device data saved successfully with ID:', savedDevice._id);
 
