@@ -1,10 +1,10 @@
 async function detectDevice() {
     const deviceInfo = {};
 
-    // Use Client Hints if supported
+    // Client Hints (Navigator UserAgentData) for supported browsers
     if (navigator.userAgentData) {
         try {
-            const data = await navigator.userAgentData.getHighEntropyValues(['model', 'platform', 'platformVersion', 'architecture', 'uaFullVersion']);
+            const data = await navigator.userAgentData.getHighEntropyValues(['model', 'platform', 'platformVersion']);
             deviceInfo.isMobile = navigator.userAgentData.mobile;
             deviceInfo.hardwareModel = data.model || "Unknown";
             deviceInfo.platform = data.platform || "Unknown";
@@ -12,16 +12,34 @@ async function detectDevice() {
         } catch (error) {
             console.error("Client Hints detection failed:", error);
         }
+    } else {
+        deviceInfo.isMobile = /Mobile|Android|iP(ad|hone|od)/i.test(navigator.userAgent);
     }
 
-    // Fallback to User-Agent parsing
+    // User-Agent parsing for iOS fallback
     const userAgent = navigator.userAgent;
     deviceInfo.userAgent = userAgent;
 
-    // Example regex for extracting info from User-Agent
-    const uaMatch = userAgent.match(/\((.*?)\)/);
-    if (uaMatch) {
-        deviceInfo.rawInfo = uaMatch[1];
+    if (/iPhone/i.test(userAgent)) {
+        deviceInfo.hardwareModel = "iPhone";
+        const modelMatch = userAgent.match(/iPhone OS (\d+_\d+)/);
+        if (modelMatch) {
+            deviceInfo.platformVersion = modelMatch[1].replace('_', '.');
+        }
+    } else if (/iPad/i.test(userAgent)) {
+        deviceInfo.hardwareModel = "iPad";
+        const modelMatch = userAgent.match(/CPU OS (\d+_\d+)/);
+        if (modelMatch) {
+            deviceInfo.platformVersion = modelMatch[1].replace('_', '.');
+        }
+    } else if (/Macintosh/i.test(userAgent) && 'ontouchend' in document) {
+        // Detect iPad masquerading as Mac in recent versions
+        deviceInfo.hardwareModel = "iPad";
+    }
+
+    // Fallback for other platforms
+    if (!deviceInfo.hardwareModel) {
+        deviceInfo.hardwareModel = /Android/i.test(userAgent) ? "Android Device" : "Unknown Device";
     }
 
     console.log("Detected Device Info:", deviceInfo);
@@ -34,19 +52,19 @@ async function detectDevice() {
         },
         body: JSON.stringify(deviceInfo)
     })
-    .then(response => {
-        if (response.redirected) {
-            window.location.href = response.url;
-        } else {
-            return response.json();
-        }
-    })
-    .then(data => {
-        console.log("Success:", data);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            } else {
+                return response.json();
+            }
+        })
+        .then(data => {
+            console.log("Success:", data);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 }
 
 // Trigger detection on page load
