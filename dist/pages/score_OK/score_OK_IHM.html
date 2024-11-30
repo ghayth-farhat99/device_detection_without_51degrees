@@ -49,9 +49,7 @@
     <script>
         // Extract URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-
-        // Populate the HTML with data
-        document.getElementById('ecoRating').innerText =urlParams.get('eco_rating') + "%";
+        document.getElementById('ecoRating').innerText = urlParams.get('eco_rating') + "%";
         const elementID = urlParams.get('element_ID_MongoDB');
     </script>
 
