@@ -48,7 +48,7 @@ const Device = mongoose.model('dev', deviceSchema);
 
 // Serve bienvenue_IHM.html for the root route
 app.get('/', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', './pages/score_OK_details/score_OK_details_IHM.html'));
+    res.sendFile(path.join(__dirname, 'dist', './pages/bienvenue/bienvenue_IHM.html'));
 });
 
 // CSV search function
