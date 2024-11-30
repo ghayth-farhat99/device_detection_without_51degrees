@@ -42,21 +42,17 @@ body {
     align-items: flex-start;
 }
 
-.first_message{
+
+h1{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+h2 {
     margin: 0;
-    margin-left: 20px;
-    width: 70%;
-    font-weight: normal;
-}
-
-.image_direction{
-    width: 20%;
-    margin-right: 10%;
-}
-
-h3 {
-    margin-left: 20px;
-    margin-bottom: 0;
+    margin-left: 5%;
+    margin-bottom: 5%;
 }
 
 p {

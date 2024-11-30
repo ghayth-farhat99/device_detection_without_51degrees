@@ -168,16 +168,16 @@ app.get('/labels_verts_IHM.html', (_req, res) => {
     res.sendFile(path.join(__dirname, 'dist', './pages/labels_verts/labels_verts_IHM.html'));
 });
 
-app.get('/ou_chercher_IHM.html', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', './pages/ou_chercher/ou_chercher_IHM.html'));
+app.get('/information_IHM.html', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', './pages/information/information_IHM.html'));
 });
 
-app.get('/ou_explorer_IHM.html', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', './pages/ou_explorer/ou_explorer_IHM.html'));
+app.get('/score_OK_details_IHM.html', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', './pages/score_OK_details/score_OK_details_IHM.html'));
 });
 
-app.get('/score_details_IHM.html', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', './pages/score_details/score_details_IHM.html'));
+app.get('/score_ameliorable_details_IHM.html', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', './pages/score_ameliorable_details/score_ameliorable_details_IHM.html'));
 });
 
 start();

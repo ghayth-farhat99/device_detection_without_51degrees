@@ -19,7 +19,7 @@
                 <!-- logo of the application will be here -->
             </div>
             <diV class="nomAppli">
-                <h1>nomAppli</h1>
+                <h1>motica</h1>
             </diV>
         </div>
         <div class="header">
@@ -34,11 +34,15 @@
             <p>Et si vous pensiez à un mobile à moindre impact pour la planète ?</p>
         </div>
 
-        <div class="btn-container">
-            <div class="btn1">
-                <button id="searchButton"> <img src="../../images/buttons/button1.png" class="icon"><span class="button-text"> Où chercher ?</span></button>
+        <div class="footer">
+            <div class="message_container">
+                <p class="footer_message">motica vous donne <br/> la direction !</p>
             </div>
-        </div>
+            <div class="image_container">
+                <img class="image_direction"/>
+            </div>
+        </div> 
+
     </div>
     
     <script>
@@ -46,14 +50,10 @@
         const urlParams = new URLSearchParams(window.location.search);
         document.getElementById('ecoRating').innerText = urlParams.get('eco_rating') + "%";
         const elementID = urlParams.get('element_ID_MongoDB');
-
-        document.getElementById("searchButton").addEventListener("click", function() {
-            window.location.href = `/ou_chercher_IHM.html?${urlParams.toString()}`;
-        });
     </script>
 
-    <!-- Inclure le fichier checkOnBaseStatus.js -->
-    <script src="../../js/checkOnBaseStatus.js"></script>
+    <!-- Inclure la fonction checkOnBaseStatus -->
+    <script src="../../js/score_ameliorable_checkOnBaseStatus.js"></script>
     
      <!-- Inclure le fichier saisonDetection.js -->
      <script src="../../js/saisonDetection.js"></script>

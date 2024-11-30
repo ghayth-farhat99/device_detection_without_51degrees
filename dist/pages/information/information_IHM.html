@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include google fonts library -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
-    <!-- Include css -->
-    <link rel="stylesheet" href="/pages/ou_explorer/ou_explorer.css"/>
+    <link rel="stylesheet" href="/pages/information/information.css"/>
     <title>Écorating</title>
 
 </head>
-<body data-page-id="ou_explorer_IHM">
+<body data-page-id="ou_chercher_IHM">
     <div class="navbar">
         <div>
             <!-- logo of the application will be here -->
         </div>
         <div class="nomAppli">
-            <h1>nomAppli</h1>
+            <h1>motica</h1>
         </div>
     </div>
     
     <div class="content">
-        <h1 class="title">Où explorer ?</h1>
-        <div class="header">
-            <p class="first_message">nomAppli vous <br/> donne la direction !</p>
-            <img class="image_direction"/>
-        </div>
+        <h1>Pourque ce score ?</h1>
         <h2>Impact environnemental <br/> des mobiles</h2>
 
         <div class="container">
@@ -54,20 +48,34 @@
             </div>
         </div>           
         
+        <div class="text_container">
+            <p class="large_text"><b>75% d'impact</b></p>
+            <p class="second_phrase">est du à la fabrication des treminaux</p>
+            <p class="third_phrase">or il y a</p>
+        </div>
+
         <div class="container_vertically">
             <div class="subcontainer_vertically">
                 <img class="image_supports"/>
             </div>
             <div class="subcontainer_vertically">
-                <p class="large_text"><b>34 milliards</b><br/>de terminaux<br/><b>75% d'impact</b></p>
+                <p class="large_text"><b>34 milliards</b><br/>de terminaux</p>
             </div>
             <div class="subcontainer_vertically">
-                <p>majoritairement dans la fabrication</p>
+                <p>Pensez à la planète 🌍 quand </br>vous décidez de changer de mobile 😊</p>
             </div>
         </div>
-        
-        
+
     </div>
+
+    <script>
+        // Extract URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const elementID = urlParams.get('element_ID_MongoDB');
+    </script>
+
+    <!-- Inclure le fichier checkOnBaseStatus.js -->
+    <script src="../../js/checkOnBaseStatus.js"></script>
 
     <!-- Inclure le fichier saisonDetection.js -->
     <script src="../../js/saisonDetection.js"></script>

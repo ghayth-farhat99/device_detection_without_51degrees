@@ -19,7 +19,7 @@
                 <!-- logo of the application will be here -->
             </div>
             <diV class="nomAppli">
-                <h1>nomAppli</h1>
+                <h1>motica</h1>
             </diV>
         </div>
         <div class="header">
@@ -34,12 +34,15 @@
             <p>Avez-vous pensé à prendre un accessoire à label vert ?</p>
         </div>
     
-        <div class="btn-container">
-            <div class="btn1">
-                <button id="findButton"><img src="../../images/buttons/button1.png" class="icon"><span class="button-text">Où les trouver ?</span></button>
+        <div class="footer">
+            <div class="message_container">
+                <p class="footer_message">motica vous donne <br/> la direction !</p>
             </div>
-    
-        </div>   
+            <div class="image_container">
+                <img class="image_direction"/>
+            </div>
+        </div> 
+        
     </div>
 
 
@@ -47,14 +50,13 @@
         // Extract URL parameters
         const urlParams = new URLSearchParams(window.location.search);
 
-        document.getElementById("findButton").addEventListener("click", function(){
-            window.location.href = "/labels_verts_IHM.html";
-        })
-
         // Populate the HTML with data
         document.getElementById('ecoRating').innerText =urlParams.get('eco_rating') + "%";
 
     </script>
+
+    <!-- Inclure la fonction checkOnBaseStatus -->
+    <script src="../../js/score_OK_checkOnBaseStatus.js"></script>
 
     <!-- Inclure le fichier saisonDetection.js -->
     <script src="../../js/saisonDetection.js"></script>

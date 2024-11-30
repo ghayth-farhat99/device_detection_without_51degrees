@@ -60,19 +60,6 @@ figure {
     font-weight: bold; /* Bold weight */
 }
 
-.btn_download{
-    float: right;
-    width: 20%;
-    margin-right: 10%;
-    background-color: var(--button-color);
-    border: 1px solid var(--border-button-color);
-    border-radius: 20px; /* Apply a beautiful rounded border */
-    color: white;
-    font-size: 20px;
-    font-weight: normal;
-}
-
-
 .bars-container {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -187,4 +174,51 @@ figure {
 
 #durability_score, #repairability_score, #recyclability_score, #climate_efficiency_score, #resource_efficiency_score{
     font-weight: 600; 
+}
+
+.wrapper {
+    display: flex; /* Use flexbox to align buttons in a row */
+    width: 100%;
+    margin: 5%;
+}
+
+/* Parent container styling to align buttons in a row */
+.btn-container {
+    display: inline-block; /* Ensure buttons are inline */
+    width: 50%;
+}
+
+/* Button styling */
+.btn-labels-verts, .btn-pdf {
+    font-family: 'dosis';
+    font-weight: bold; /* Bold weight */
+    font-size: 20px;
+    color: white;
+    width: 90%; /* Set a fixed width for buttons */
+    background-color: var(--button-color);
+    text-align: center;
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    justify-content: center; /* Center content horizontally */
+    padding: 10px;
+    position: relative; /* So we can adjust the icon position */
+    border: 1px solid var(--border-button-color);
+    border-radius: 20px; /* Apply a beautiful rounded border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Style for the icon */
+.icon {
+    width: 40px; /* Set a fixed size for the icon */
+    position: absolute;
+    left: 5%; /* Align icon to the left inside the button */
+}
+
+/* Style for button text */
+.button-text {
+    flex: 1;
+    text-align: center;
+    margin-left: 30px;
 }

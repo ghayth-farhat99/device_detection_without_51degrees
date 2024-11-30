@@ -76,55 +76,40 @@ figure {
     font-size: 25px;
 }
 
-/* Style for the button container */
-.btn-container {
-    width: 100%;
-    position: fixed;
-    bottom: 10px; /* Position the container at the bottom */
-    left: 50%; /* Center the container horizontally */
-    transform: translateX(-50%); /* Adjust for the container's width */
-    display: flex;
-    flex-direction: column; /* Ensure buttons are stacked vertically */
-    align-items: center; /* Center items in the container */
+.footer {
+    display: flex; /* Use flexbox for alignment */
+    position: absolute; /* Position the footer at the bottom */
+    bottom: 0; /* Attach it to the bottom of the page */
+    width: 90%; /* Total width of the footer */
+    margin: 0 5% 5%; /* Add margins on left, right, and bottom */
 }
 
-/* Style for individual buttons */
-.btn1 {
-    width: 250px;
-    margin-bottom: 10px; /* Ensure there’s space between the buttons */
+.footer .message_container {
+    width: 60%; /* Make the message container occupy 60% of the footer width */
+    display: flex; /* Use flexbox for the message alignment */
+    justify-content: flex-start; /* Ensure alignment starts at the top */
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Align text to the start (top-left) */
+    text-align: left; /* Align text content to the left */
+    
 }
 
-button {
-    font-family: 'dosis' ;
-    font-weight: bold; /* Bold weight */
-    font-size: 20px;
-    color: white;
-    width: 100%;
-    background-color: var(--button-color);
-    text-align: center;
-    display: flex;
-    align-items: center; /* Align icon and text vertically */
-    justify-content: center; /* Center content horizontally */
-    padding: 10px;
-    position: relative; /* So we can adjust the icon position */
-    border: 1px solid var(--border-button-color);
-    border-radius: 20px; /* Apply a beautiful rounded border */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+.footer .footer_message {
+    margin: 0; /* Remove default margins */
+    text-align: left;
+    font-weight: normal; /* regular weight */
+    font-size: 25px;
 }
 
-
-/* Style for the icon */
-.icon {
-    width: 40px; /* Set a fixed size for the icon */
-    position: absolute;
-    left: 10px; /* Align icon to the left inside the button */
-
+.footer .image_container {
+    width: 40%; /* Make the image container occupy 40% of the footer width */
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Horizontally center the image */
+    align-items: center; /* Vertically center the image */
 }
 
-.button-text {
-    flex: 1;
-    text-align: center;
-    margin-left: 30px;
+.footer .image_direction {
+    width: 80%; /* Image takes 80% of the container width */
+    max-width: 100px; /* Optional: set a maximum width */
+    height: auto; /* Maintain aspect ratio */
 }

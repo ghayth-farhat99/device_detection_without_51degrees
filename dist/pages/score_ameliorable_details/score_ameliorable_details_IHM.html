@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
     <!-- Include css -->
-    <link rel="stylesheet" href="/pages/score_details/score_details.css"/>
+    <link rel="stylesheet" href="/pages/score_ameliorable_details/score_ameliorable_details.css"/>
     <!-- Include jsPDF library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <title>Écorating</title>
@@ -20,7 +20,7 @@
             <!-- logo of the application will be here -->
         </div>
         <div class="nomAppli">
-            <h1>nomAppli</h1>
+            <h1>motica</h1>
         </div>
     </div>
     <div class="content">
@@ -30,10 +30,6 @@
                 <img class="logo">
             </figure>
             <h1 id="ecoRating" class="score"></h1>
-        </div>
-        
-        <div class="btn-container">
-            <button class="btn_download" onclick="downloadPDF()">pdf</button>
         </div>
 
         <div class="bars-container">
@@ -148,11 +144,32 @@
             </div>
                     
         </div>
+
+        <div class="wrapper">
+            <div class="btn-container">
+                <button class="btn-infos" id="infos-btn"> 
+                    <img src="../../images/buttons/information.png" class="icon">
+                    <span class="button-text">infos</span>
+                </button>
+            </div>
+    
+            <div class="btn-container">
+                <button class="btn-pdf" onclick="downloadPDF()">
+                    <img src="../../images/buttons/pdf.png" class="icon">
+                    <span class="button-text">pdf</span>
+                </button>
+            </div>
+        </div>
+         
     </div>
     
     <script>
         const urlParams = new URLSearchParams(window.location.search);
 
+        document.getElementById("infos-btn").addEventListener("click", function(){
+            window.location.href = "/information_IHM.html";
+        })
+        
         function setProgressBar(id, value) {
             const bar = document.getElementById(id);
             bar.style.width = value + '%';

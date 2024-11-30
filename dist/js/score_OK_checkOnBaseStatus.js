@@ -5,7 +5,7 @@ function checkOnBaseStatus() {
         .then(response => response.json())
         .then(data => {
             if (data.onBase === 1) {
-                window.location.href = `/score_details_IHM.html?${urlParams.toString()}`;
+                window.location.href = `/score_OK_details_IHM.html?${urlParams.toString()}`;
             }
         })
         .catch(error => console.error('Error checking onBase status:', error));

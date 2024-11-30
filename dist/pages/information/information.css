@@ -42,41 +42,24 @@ body {
     align-items: flex-start;
 }
 
-.first_message{
-    margin: 0;
-    margin-left: 20px;
-    width: 70%;
-}
-
-.image_direction{
-    width: 20%;
-    margin-right: 10%;
-}
-
-.image-container img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-p {
-    margin-left: 20px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    font-weight: normal;
+h1{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
 }
 
 h2 {
-    margin-left: 20px;
-    margin-bottom: 0;
+    margin: 0;
+    margin-left: 5%;
+    margin-bottom: 5%;
 }
 
 .container {
     display: flex;
     flex-direction: row; /* Change to row for horizontal layout */
-    margin-left: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
 }
 
 .subcontainer {
@@ -101,6 +84,7 @@ h2 {
     display: flex;
     flex-direction: column; /* Vertical layout */
     margin: 20px 10px;
+    text-align: center;
 }
 
 .subcontainer_vertically {
@@ -116,13 +100,22 @@ h2 {
     height: auto; /* Maintain aspect ratio */
 }
 
-.large_text {
-    font-size: 3em; /* Adjust the size as needed */
-    text-align: center; /* Center-aligns the text */
-    width: 100%; /* Makes the text block take up the full width */
-    margin: 0; /* Removes any default margin */
+
+.text_container {
+    text-align: center; /* Align all text to the left */
+    margin: 0 5%; /* Add margins to the container */
 }
 
-.subcontainer_vertically p {
-    margin: 0; /* Removes any default margin */
+.large_text {
+    font-size: 3em; 
+    margin: 0;
+}
+.second_phrase {
+    margin: 0; 
+    font-size: 1em; 
+}
+
+.third_phrase {
+    margin-top: 5%; 
+    font-size: 1em; 
 }

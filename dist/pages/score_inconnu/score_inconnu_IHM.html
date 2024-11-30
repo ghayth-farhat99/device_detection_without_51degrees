@@ -13,15 +13,16 @@
 
 </head>
 <body data-page-id="score_inconnu_IHM">
-    <div class="content">
-        <div class="navbar">
-            <div>
-                <!-- logo of the application will be here -->
-            </div>
-            <diV class="nomAppli">
-                <h1>nomAppli</h1>
-            </diV>
+    <div class="navbar">
+        <div>
+            <!-- logo of the application will be here -->
         </div>
+        <diV class="nomAppli">
+            <h1>motica</h1>
+        </diV>
+    </div>
+
+    <div class="content">
         <div class="header">
             <figure>
                 <figcaption class="logo_title">score écorating</figcaption>
@@ -34,25 +35,64 @@
             <p>L'écorating de votre téléphone n'est pas disponible.<br/>Le constructeur n'a pas transmis les Informations nécessaires au calcul du score.</p>
         </div>
 
-        <div class="btn-container">
-            <div class="btn1">
-                <button id="explorButton"> <img src="../../images/buttons/button1.png" class="icon"><span class="button-text"> Où explorer  ?</span></button>
+        <div class="direction_container">
+            <div class="message_container">
+                <p class="direction_container_message">motica vous propose de parcourir la boutique et de vous renseigner sur les scores des mobiles présents.</p>
+            </div>
+            <div class="image_container">
+                <img class="image_direction"/>
+            </div>
+        </div>
+
+        <h2>Pourque ce score ?</h2>
+        <h3>Impact environnemental <br/> des mobiles</h3>
+
+        <div class="container">
+            <div class="subcontainer">
+                <img class="image_planete"/>
+            </div>
+            <div class="subcontainer">
+                <p class="percentage">4%</p>
+            </div>
+            <div class="subcontainer">
+                <p>des émissions à effets serre (GES) dans le monde</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="subcontainer">
+                <img class="image_croissance"/>
+            </div>
+            <div class="subcontainer">
+                <p class="percentage">60%</p>
+            </div>
+            <div class="subcontainer">
+                <p>de croissance prévue d'ici 2040</p>
+            </div>
+        </div>           
+        
+        <div class="text_container">
+            <p class="large_text"><b>75% d'impact</b></p>
+            <p class="second_phrase">est du à la fabrication des treminaux</p>
+            <p class="third_phrase">or il y a</p>
+        </div>
+
+        <div class="container_vertically">
+            <div class="subcontainer_vertically">
+                <img class="image_supports"/>
+            </div>
+            <div class="subcontainer_vertically">
+                <p class="large_text"><b>34 milliards</b><br/>de terminaux</p>
+            </div>
+            <div class="subcontainer_vertically">
+                <p>Pensez à la planète 🌍 quand </br>vous décidez de changer de mobile 😊</p>
             </div>
         </div>
 
     </div>
 
-    <script>
-        document.getElementById("explorButton").addEventListener("click",function(){
-            window.location.href = "/ou_explorer_IHM.html";
-        });
-    </script>
-
     <!-- Inclure le fichier saisonDetection.js -->
     <script src="../../js/saisonDetection.js"></script>
-
-    <!-- Inclure le fichier wakeLock.js -->
-    <script src="../../js/wakeLock.js"></script>
     
 </body>
 </html>
