@@ -31,7 +31,7 @@ const start = async () => {
             throw new Error('Invalid or missing THRESHOLD value in configurations collection.');
         }
 
-        const threshold = parseInt(config.value, 10);
+        threshold = parseInt(config.value, 10);
 
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
