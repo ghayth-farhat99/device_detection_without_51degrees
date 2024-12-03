@@ -20,14 +20,28 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // MongoDB connection
 const start = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_CONNECT_URL);
+        // Connect to the database
+        const tempConnection = await mongoose.connect(`${process.env.MONGODB_CONNECT_URL}/${process.env.MONGODB_DATABASE}`);
+
+        // Fetch the THRESHOLD value from the configurations collection
+        const configCollection = tempConnection.connection.db.collection('configurations');
+        const config = await configCollection.findOne({ _id: 'threshold' });
+
+        if (!config || isNaN(config.value)) {
+            throw new Error('Invalid or missing THRESHOLD value in configurations collection.');
+        }
+
+        const threshold = parseInt(config.value, 10);
+
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
+            console.log(`Threshold value set to: ${threshold}`);
         });
     } catch (e) {
-        console.log(e.message);
+        console.error('Error:', e.message);
     }
 };
+
 
 // Device schema for MongoDB
 const deviceSchema = new mongoose.Schema({
@@ -44,7 +58,7 @@ const deviceSchema = new mongoose.Schema({
     onBase: Number,
 }, { timestamps: true });
 
-const Device = mongoose.model('dev', deviceSchema);
+const Device = mongoose.model('devs', deviceSchema);
 
 // Serve bienvenue_IHM.html for the root route
 app.get('/', (_req, res) => {
