@@ -148,6 +148,7 @@ app.post('/', async (req, res) => {
                     resource_efficiency: encodeURIComponent(deviceFromCsv.resource_efficiency || ''),
                     element_ID_MongoDB: savedDevice._id,
                 }).toString();
+                console.log("threshold : ", threshold);
                 if (ecoRating > threshold) {
                     return res.redirect(`/score_OK_IHM.html?${queryParams}`);
                 } else {
