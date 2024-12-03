@@ -16,30 +16,43 @@ let threshold;
 //this line will solve the problem of running css and images 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
 // MongoDB connection
-const start = async () => {
+const connectToDatabase = async () => {
     try {
-        // Connect to the database
-        const tempConnection = await mongoose.connect(`${process.env.MONGODB_CONNECT_URL}/${process.env.MONGODB_DATABASE}`);
+        await mongoose.connect(`${process.env.MONGODB_CONNECT_URL}/${process.env.MONGODB_DATABASE}`);
+        console.log("Connected to MongoDB");
+    } catch (e) {
+        console.error('Error connecting to MongoDB:', e.message);
+    }
+};
 
-        // Fetch the THRESHOLD value from the configurations collection
-        const configCollection = tempConnection.connection.db.collection('configurations');
+// Function to fetch the latest threshold value
+const getThreshold = async () => {
+    try {
+        const configCollection = mongoose.connection.db.collection('configurations');
         const config = await configCollection.findOne({ _id: 'threshold' });
 
         if (!config || isNaN(config.value)) {
             throw new Error('Invalid or missing THRESHOLD value in configurations collection.');
         }
 
-        threshold = parseInt(config.value, 10);
+        return parseInt(config.value, 10);
+    } catch (e) {
+        console.error('Error fetching threshold:', e.message);
+        return null;
+    }
+};
+
+// Start the server
+const startServer = async () => {
+    try {
+        await connectToDatabase();
 
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
-            console.log(`Threshold value set to: ${threshold}`);
         });
-        return threshold;
     } catch (e) {
-        console.error('Error:', e.message);
+        console.error('Error starting server:', e.message);
     }
 };
 
@@ -61,8 +74,14 @@ const deviceSchema = new mongoose.Schema({
 const Device = mongoose.model('devs', deviceSchema);
 
 // Serve bienvenue_IHM.html for the root route
-app.get('/', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', './pages/bienvenue/bienvenue_IHM.html'));
+app.get('/', async (_req, res) => {
+    try {
+        const threshold = await getThreshold();
+        console.log(`Current threshold value: ${threshold}`);
+        res.sendFile(path.join(__dirname, 'dist', './pages/bienvenue/bienvenue_IHM.html'));
+    } catch (e) {
+        res.status(500).send('Error fetching threshold value');
+    }
 });
 
 // CSV search function
@@ -195,4 +214,4 @@ app.get('/score_ameliorable_details_IHM.html', (_req, res) => {
 });
 
 
-start();
+startServer();
