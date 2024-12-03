@@ -12,7 +12,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 const csvFilePath = path.resolve('devices.csv');
-var threshold = process.env.THRESHOLD;
+let threshold;
 //this line will solve the problem of running css and images 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -37,11 +37,11 @@ const start = async () => {
             console.log(`Server is running on port ${PORT}`);
             console.log(`Threshold value set to: ${threshold}`);
         });
+        return threshold;
     } catch (e) {
         console.error('Error:', e.message);
     }
 };
-
 
 // Device schema for MongoDB
 const deviceSchema = new mongoose.Schema({
@@ -129,13 +129,13 @@ app.post('/', async (req, res) => {
                     resource_efficiency: encodeURIComponent(deviceFromCsv.resource_efficiency || ''),
                     element_ID_MongoDB: savedDevice._id,
                 }).toString();
-                
                 if (ecoRating > threshold) {
                     return res.redirect(`/score_OK_IHM.html?${queryParams}`);
                 } else {
                     return res.redirect(`/score_ameliorable_IHM.html?${queryParams}`);
                 }
             } else {
+                
                 return res.redirect('/score_inconnu_IHM.html');
             }
         }
@@ -193,5 +193,6 @@ app.get('/score_OK_details_IHM.html', (_req, res) => {
 app.get('/score_ameliorable_details_IHM.html', (_req, res) => {
     res.sendFile(path.join(__dirname, 'dist', './pages/score_ameliorable_details/score_ameliorable_details_IHM.html'));
 });
+
 
 start();
