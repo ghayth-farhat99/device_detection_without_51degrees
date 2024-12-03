@@ -76,7 +76,7 @@ const Device = mongoose.model('devs', deviceSchema);
 // Serve bienvenue_IHM.html for the root route
 app.get('/', async (_req, res) => {
     try {
-        const threshold = await getThreshold();
+        threshold = await getThreshold();
         console.log(`Current threshold value: ${threshold}`);
         res.sendFile(path.join(__dirname, 'dist', './pages/bienvenue/bienvenue_IHM.html'));
     } catch (e) {
