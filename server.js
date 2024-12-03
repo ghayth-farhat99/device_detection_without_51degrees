@@ -130,7 +130,7 @@ app.post('/', async (req, res) => {
                     element_ID_MongoDB: savedDevice._id,
                 }).toString();
                 
-                if (ecoRating > process.env.THRESHOLD) {
+                if (ecoRating > threshold) {
                     return res.redirect(`/score_OK_IHM.html?${queryParams}`);
                 } else {
                     return res.redirect(`/score_ameliorable_IHM.html?${queryParams}`);

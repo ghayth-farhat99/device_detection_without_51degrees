@@ -23,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 .header {
@@ -178,13 +179,14 @@ figure {
 
 .wrapper {
     display: flex; /* Use flexbox to align buttons in a row */
-    width: 100%;
+    width: 90%;
     margin: 5%;
 }
 
 /* Parent container styling to align buttons in a row */
 .btn-container {
-    display: inline-block; /* Ensure buttons are inline */
+    display: flex;
+    justify-content: center;
     width: 50%;
 }
 
