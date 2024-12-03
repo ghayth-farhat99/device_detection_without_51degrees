@@ -12,7 +12,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 const csvFilePath = path.resolve('devices.csv');
-const threshold = process.env.THRESHOLD;
+var threshold = process.env.THRESHOLD;
 //this line will solve the problem of running css and images 
 app.use(express.static(path.join(__dirname, 'dist')));
 
