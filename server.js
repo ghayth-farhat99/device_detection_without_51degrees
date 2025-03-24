@@ -69,6 +69,7 @@ const deviceSchema = new mongoose.Schema({
     climate_efficiency: Number,
     resource_efficiency: Number,
     onBase: Number,
+    existsInCsv: Number,
 }, { timestamps: true });
 
 const Device = mongoose.model('devs', deviceSchema);
@@ -124,6 +125,7 @@ app.post('/', async (req, res) => {
 
             if (deviceFromCsv) {
             // Save the document to the database
+                deviceData.existsInCsv = 1;
                 deviceData.onBase = 0;
                 deviceData.ecoScore = parseInt(deviceFromCsv.eco_rating, 10);
                 deviceData.durability = encodeURIComponent(deviceFromCsv.durability || '');
@@ -155,7 +157,11 @@ app.post('/', async (req, res) => {
                     return res.redirect(`/score_ameliorable_IHM.html?${queryParams}`);
                 }
             } else {
-                
+                deviceData.existsInCsv = 1;
+                // Create a new device document using the model
+                const device = new Device(deviceData);
+                const savedDevice = await device.save();
+                console.log('Device data saved successfully with ID:', savedDevice._id);
                 return res.redirect('/score_inconnu_IHM.html');
             }
         }
